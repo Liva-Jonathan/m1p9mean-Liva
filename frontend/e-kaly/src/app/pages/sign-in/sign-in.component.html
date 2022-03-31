@@ -1,0 +1,48 @@
+<main class="d-flex w-100">
+    <div class="container d-flex flex-column">
+        <div class="row vh-100">
+            <div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
+                <div class="d-table-cell align-middle">
+
+                    <div class="text-center mt-4">
+                        <h1 class="h2">Bienvenue sur E-Kaly.com</h1>
+                        <p class="lead">
+                            Connectez-vous pour continuer
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="m-sm-4">
+                                <div class="text-center">
+                                    <img src="assets/img/icons/icon-48x48.png" alt="Charles Hall" class="img-fluid rounded-circle" width="50" height="50" />
+                                </div>
+                                <form>
+                                    <div class="mb-3">
+                                        <label class="form-label">Email</label>
+                                        <input class="form-control form-control-lg" type="email" [(ngModel)] = "user.email" name="email" placeholder="Entrer votre email" autofocus />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Mot de passe</label>
+                                        <input class="form-control form-control-lg" type="password" [(ngModel)] = "user.password" name="password" placeholder="Entrer votre mot de passe" />              
+                                    </div>
+                                    <div>
+                                        <span>Vous êtes nouveau ici ? <a href="/sign-up">Inscrivez-vous.</a></span>
+                                    </div>
+                                    <div class="text-center mt-3">
+                                        <button *ngIf = "!loading.login" type="submit" (click) = "login()" class="btn btn-lg btn-primary">Connexion</button>
+                                        <button *ngIf = "loading.login" class="btn btn-lg btn-primary" type="button" disabled>
+                                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                            Connexion
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

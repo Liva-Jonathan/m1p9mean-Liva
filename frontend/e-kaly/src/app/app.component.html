@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div *ngIf = "authService.isConnected" class="wrapper">
   <app-sidebar></app-sidebar>
 
   <div class="main">
@@ -29,3 +29,5 @@
     <app-footer></app-footer>
   </div>
 </div>
+
+<router-outlet *ngIf = "!authService.isConnected"></router-outlet>
