@@ -17,27 +17,27 @@
                                 <form>
                                     <div class="mb-3">
                                         <label class="form-label">Nom</label>
-                                        <input class="form-control form-control-lg" type="text" name="name" placeholder="Entrer votre nom" />
+                                        <input class="form-control form-control-lg" type="text" [(ngModel)] = "user.name" name="name" placeholder="Entrer votre nom" />
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Prénom</label>
-                                        <input class="form-control form-control-lg" type="text" name="firstname" placeholder="Entrer votre prénom" />
+                                        <input class="form-control form-control-lg" type="text" [(ngModel)] = "user.firstname" name="firstname" placeholder="Entrer votre prénom" />
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Adresse</label>
-                                        <input class="form-control form-control-lg" type="text" name="address" placeholder="Entrer votre addresse" />
+                                        <input class="form-control form-control-lg" type="text" [(ngModel)] = "user.address" name="address" placeholder="Entrer votre addresse" />
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Email</label>
-                                        <input class="form-control form-control-lg" type="email" name="email" placeholder="Entrer votre email" />
+                                        <input class="form-control form-control-lg" type="email" [(ngModel)] = "user.email" name="email" placeholder="Entrer votre email" />
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Mot de passe</label>
-                                        <input class="form-control form-control-lg" type="password" name="password" placeholder="Entrer un mot de passe" />
+                                        <input class="form-control form-control-lg" type="password" [(ngModel)] = "user.password" name="password" placeholder="Entrer un mot de passe" />
                                     </div>
                                     <div class="text-center mt-3">
                                         <!-- <a href="index.html" class="btn btn-lg btn-primary">S'inscrire</a> -->
-                                        <button type="submit" class="btn btn-lg btn-primary">S'inscrire</button>
+                                        <button type="submit" (click) = "signup()" class="btn btn-lg btn-primary">S'inscrire</button>
                                     </div>
                                 </form>
                             </div>

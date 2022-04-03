@@ -10,13 +10,14 @@ export class PopupService {
 
   success(message : string) : void {
     const title = "Success";
-    const icon : SweetAlertIcon= "success";
-    Swal.fire(title, message, icon);
+    const icon : SweetAlertIcon = "success";
+    // Swal.fire(title, message, icon);
+    Swal.fire({title: title, text: message, icon: icon, confirmButtonColor: "#5cb85c"});
   }
 
   error(title : string, message : string) : void {
     const icon : SweetAlertIcon= "error";
-    Swal.fire(title, message, icon);
+    Swal.fire({title: title, text: message, icon: icon, confirmButtonColor: "#292b2c"});
   }
 
   confirm(message : string, confirmButtonText : string, onConfirm : any, onCancel : any) : void {
