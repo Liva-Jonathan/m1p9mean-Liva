@@ -1,6 +1,6 @@
 var express = require('express');
 
-const clientRoutes = require('./routes/Client');
+const authRoutes = require('./routes/Auth');
 
 const mongoose = require('mongoose');
 
@@ -21,7 +21,7 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 
-app.use('/api/auth', clientRoutes);
+app.use('/api/auth', authRoutes);
 
 app.listen(3000, function() {
     console.log("Server is running on port 3000");

@@ -22,6 +22,9 @@ export class SignUpComponent implements OnInit {
   constructor(private authService : AuthService, private popup : PopupService, private router : Router) { }
 
   ngOnInit(): void {
+    if(this.authService.isConnected) {
+      this.router.navigateByUrl("/foods");
+    }
   }
 
   signup(): void {

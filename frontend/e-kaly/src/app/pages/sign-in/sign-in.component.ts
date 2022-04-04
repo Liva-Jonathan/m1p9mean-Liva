@@ -19,7 +19,6 @@ export class SignInComponent implements OnInit {
   constructor(private authService : AuthService, private popup : PopupService, private router : Router) { }
 
   ngOnInit(): void {
-    console.log(this.authService.isConnected);
     if(this.authService.isConnected) {
       this.router.navigateByUrl("/foods");
     }
