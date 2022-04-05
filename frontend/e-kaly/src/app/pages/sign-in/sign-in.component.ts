@@ -29,8 +29,16 @@ export class SignInComponent implements OnInit {
 
     const onSuccess = (res : any) => {
       console.log(res);
-      localStorage.setItem("token", res.token);
+
+      const auth = {
+        user: res.user,
+        token: res.token
+      };
+      localStorage.setItem("auth", JSON.stringify(auth));
+
       this.authService.isConnected = true;
+      this.authService.user = res.user;
+      this.authService.token = res.token;
 
       this.router.navigateByUrl("/foods");
     }

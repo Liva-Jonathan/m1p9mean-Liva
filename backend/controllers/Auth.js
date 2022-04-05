@@ -1,10 +1,29 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const mongoose = require('mongoose');
 
 const Client = require('../models/Client');
 const Restaurant = require('../models/Restaurant');
 const DeliveryMan = require('../models/DeliveryMan');
 const Manager = require('../models/Manager');
+
+exports.getUser = (req, res, next) => {
+    const userType = req.query.type;
+    const userId = req.params.userId;
+
+    const UserModel = mongoose.model(userType);
+    UserModel.findById(userId).lean()
+        .then(user => {
+            if(!user) return res.status(401).json({ error: 'Unexisting User !' });
+
+            user.userType = userType;
+            res.status(200).json({ user: user });
+        })
+        .catch(error => { 
+            console.log(error);
+            res.status(500).json({ error: error.message })
+        });
+};
 
 exports.findUser = (User, req, res, next) => {
     if(req.user) return next();
@@ -13,11 +32,7 @@ exports.findUser = (User, req, res, next) => {
       .then(user => {
         if (user) {
           // return res.status(401).json({ error: 'Unexisting Client !' });
-          req.user = {
-            _id: user._id,
-            email: user.email,
-            password: user.password
-          }
+          req.user = { ...user, userType: User.modelName }
         }
         next();
       })
@@ -54,7 +69,7 @@ exports.checkUser = (req, res, next) => {
                 return res.status(401).json({ error: 'Password incorrect !' });
             }
             res.status(200).json({
-                userId: req.user._id,
+                user: req.user,
                 token: jwt.sign({ userId: req.user._id, }, 'RANDOM_TOKEN_SECRET', { expiresIn: '24h' })
             });
         })
