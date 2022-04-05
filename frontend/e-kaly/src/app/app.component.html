@@ -1,0 +1,19 @@
+<div *ngIf = "authService.isConnected" class="wrapper">
+  <app-sidebar></app-sidebar>
+
+  <div class="main">
+    <app-header></app-header>
+    
+    <main class="content">
+      <div class="container-fluid p-0">
+
+        <router-outlet></router-outlet>
+        
+      </div>
+    </main>
+
+    <app-footer></app-footer>
+  </div>
+</div>
+
+<router-outlet *ngIf = "!authService.isConnected"></router-outlet>

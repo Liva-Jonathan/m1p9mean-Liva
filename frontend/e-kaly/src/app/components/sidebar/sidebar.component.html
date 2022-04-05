@@ -1,0 +1,28 @@
+<nav id="sidebar" class="sidebar js-sidebar">
+    <div class="sidebar-content js-simplebar">
+      <a class="sidebar-brand logo" href="/">
+        <img src="assets/img/icons/icon-48x48.png" alt="Charles Hall" class="img-fluid rounded-circle" width="40" height="40" />
+        <span class="align-middle"> E-Kaly</span>
+      </a>
+
+      <ul class="sidebar-nav">
+        <li class="sidebar-header">
+          Client
+        </li>
+
+        <li class="sidebar-item" [ngClass] = "{'active': router.url === '/foods'}">
+          <a class="sidebar-link" href="/foods">
+            <i class="align-middle" data-feather="package"></i> <span class="align-middle">Plats</span>
+          </a>
+        </li>
+
+        <li class="sidebar-item">
+          <a class="sidebar-link" href="">
+            <i class="align-middle" data-feather="shopping-bag"></i> <span class="align-middle">Commandes</span>
+          </a>
+        </li>
+
+      </ul>
+
+    </div>
+  </nav>
