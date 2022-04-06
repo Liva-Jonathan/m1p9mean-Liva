@@ -162,6 +162,29 @@ db.orderDetails.insert([
     }
 ])
 
+
+// Food joining Restaurant
+
+db.food.aggregate([
+	{
+		$addFields: {
+			idRestaurant: {
+				$toObjectId: "$idRestaurant"
+			}
+		}	
+	},
+	{	
+		$lookup: {
+			from: "restaurant",
+			localField: "idRestaurant",
+			foreignField: "_id",
+			as: "restaurant"
+		}
+	}
+])
+
+
+
 // db.order.aggregate([
 //     { $project: { field: { $concat: ["a", "b"] } } }
 // ])

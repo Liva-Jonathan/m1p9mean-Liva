@@ -1,7 +1,41 @@
-<h1 class="h3 mb-3"><strong>Plats</strong> </h1>
 
-<div class="row">
-    <div class="col-12">
+<div class="card-container">
+    <!-- <ngx-shimmer-loading [width]="'250px'" [height]="'200px'"></ngx-shimmer-loading> -->
+    <ng-container *ngIf="foods; else foodsLoading">
+        <div *ngFor = "let food of foods" class="card">
+            <div *ngIf="food.isImageLoading" class="spinner-border" role="status">
+                <span class="sr-only"></span>
+            </div>
+            <img *ngIf="!food.isImageLoading" [src]="food.imageSrc" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title title">{{food.name}}</h5>
+                <span class="card-subtitle price d-flex align-items-center"><i class="align-middle" data-feather="credit-card"></i> {{food.price}} Ar</span>
+                <p class="card-text restaurant d-flex align-items-center"><i class="align-middle" data-feather="home"></i> {{food.restaurant.name}}</p>
+                <button class="btn btn-outline-primary">Commander</button>
+            </div>
+        </div>
+    </ng-container>
+
+    <ng-template #foodsLoading>
+        <div *ngFor = "let food of [1,1,1,1,1]" class="card">
+            <div *ngIf="food.isImageLoading" class="spinner-border" role="status">
+                <span class="sr-only"></span>
+            </div>
+            <ngx-shimmer-loading [shape]="'rect'" [width]="'250px'" [height]="'200px'"></ngx-shimmer-loading>
+            <div class="card-body">
+                <h5 class="card-title title">{{food.name}}</h5>
+                <span class="card-subtitle price d-flex align-items-center"><i class="align-middle" data-feather="credit-card"></i> {{food.price}} Ar</span>
+                <p class="card-text restaurant d-flex align-items-center"><i class="align-middle" data-feather="home"></i> {{food.restaurant.name}}</p>
+                <button class="btn btn-outline-primary">Commander</button>
+            </div>
+        </div>
+    </ng-template>
+    
+</div>
+
+
+
+    <!-- <div class="col-12">
     <div class="card">
         <div class="card-header">
         <h5 class="card-title mb-0">Empty card</h5>
@@ -9,5 +43,4 @@
         <div class="card-body">
         </div>
     </div>
-    </div>
-</div>
+    </div> -->

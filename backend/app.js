@@ -1,6 +1,9 @@
 var express = require('express');
 
+const path = require('path');
+
 const authRoutes = require('./routes/Auth');
+const foodRoutes = require('./routes/Food');
 
 const mongoose = require('mongoose');
 
@@ -21,7 +24,10 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 
+app.use('/api/images', express.static(path.join(__dirname, 'assets/images')));
+
 app.use('/api/auth', authRoutes);
+app.use('/api/Food', foodRoutes);
 
 app.listen(3000, function() {
     console.log("Server is running on port 3000");
