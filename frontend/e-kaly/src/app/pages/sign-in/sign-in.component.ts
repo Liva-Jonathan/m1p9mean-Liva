@@ -19,9 +19,6 @@ export class SignInComponent implements OnInit {
   constructor(private authService : AuthService, private popup : PopupService, private router : Router) { }
 
   ngOnInit(): void {
-    if(this.authService.isConnected) {
-      this.router.navigateByUrl("/foods");
-    }
   }
 
   login() {
@@ -40,7 +37,7 @@ export class SignInComponent implements OnInit {
       this.authService.user = res.user;
       this.authService.token = res.token;
 
-      this.router.navigateByUrl("/foods");
+      this.router.navigateByUrl(AuthService.USER_REDIRECT[auth.user.userType]);
     }
 
     const onError = (res : any) => {

@@ -11,6 +11,9 @@ import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FoodListClientComponent } from './pages/client/food-list-client/food-list-client.component';
+import { OrderRestaurantComponent } from './restaurant/order-restaurant/order-restaurant.component';
+import { FoodsDeliverDeliveryManComponent } from './deliveryMan/foods-deliver-delivery-man/foods-deliver-delivery-man.component';
+import { OrderManagerComponent } from './manager/order-manager/order-manager.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +24,9 @@ import { FoodListClientComponent } from './pages/client/food-list-client/food-li
     SignInComponent,
     SignUpComponent,
     FoodListClientComponent,
+    OrderRestaurantComponent,
+    FoodsDeliverDeliveryManComponent,
+    OrderManagerComponent,
   ],
   imports: [
     BrowserModule,

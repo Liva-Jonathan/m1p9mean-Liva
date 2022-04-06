@@ -13,6 +13,13 @@ export class AuthService {
   user : any;
   token: String = '';
 
+  public static readonly USER_REDIRECT : any = {
+    Client: '/foods',
+    Restaurant: '/order-restaurant',
+    DeliveryMan: '/delivery',
+    Manager: '/order-manager'
+  };
+
   constructor(private http: HttpClient, private router : Router, private popup : PopupService) {
     if(localStorage.getItem("auth")) {
       this.isConnected = true;
@@ -35,6 +42,8 @@ export class AuthService {
     }
 
     const onError = (res : any) => {
+      this.isConnected = false;
+      this.router.navigateByUrl("/");
       this.popup.error("Error " + res.status, res.error.error);
     }
     
