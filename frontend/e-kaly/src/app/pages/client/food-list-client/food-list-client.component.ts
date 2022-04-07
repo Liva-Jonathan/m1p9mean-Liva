@@ -23,7 +23,6 @@ export class FoodListClientComponent implements OnInit {
   }
 
   getFoods() : void {
-    console.log("eto:", this.foods);
     const onSuccess = (res : any) => {
       this.foods = res;
       for(let i=0; i<this.foods.length; i++) {

@@ -14,7 +14,7 @@ import { FoodListClientComponent } from './pages/client/food-list-client/food-li
 import { OrderRestaurantComponent } from './restaurant/order-restaurant/order-restaurant.component';
 import { FoodsDeliverDeliveryManComponent } from './deliveryMan/foods-deliver-delivery-man/foods-deliver-delivery-man.component';
 import { OrderManagerComponent } from './manager/order-manager/order-manager.component';
-import { NgxShimmerLoadingModule } from 'ngx-shimmer-loading';
+import { NgxContentLoadingModule } from 'ngx-content-loading';
 
 @NgModule({
   declarations: [
@@ -34,7 +34,7 @@ import { NgxShimmerLoadingModule } from 'ngx-shimmer-loading';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    NgxShimmerLoadingModule
+    NgxContentLoadingModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

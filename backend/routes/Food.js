@@ -5,7 +5,7 @@ const foodCtrl = require('../controllers/Food');
 
 const auth = require('../middleware/auth');
 
-router.get('/', (req, res, next)=>{setTimeout(()=>{next()}, 3000)}, foodCtrl.getAllFoods);
+router.get('/', foodCtrl.getAllFoods);
 router.get('/:foodId', foodCtrl.getOneFood);
 
 module.exports = router;
