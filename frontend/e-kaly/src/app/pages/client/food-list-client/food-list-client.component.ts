@@ -14,10 +14,10 @@ export class FoodListClientComponent implements OnInit {
   foods : any[];
   isFoodsLoading = false;
 
-  constructor(private titleSerice : Title, private foodService : FoodService, private popup : PopupService, public imageService: ImageService) { }
+  constructor(private titleService : Title, private foodService : FoodService, private popup : PopupService, public imageService: ImageService) { }
 
   ngOnInit(): void {
-    this.titleSerice.setTitle("Plats");
+    this.titleService.setTitle("Plats");
 
     this.getFoods();
   }

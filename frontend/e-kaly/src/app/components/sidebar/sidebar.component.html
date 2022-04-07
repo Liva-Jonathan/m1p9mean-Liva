@@ -16,9 +16,9 @@
           </a>
         </li>
 
-        <li class="sidebar-item">
-          <a class="sidebar-link" href="">
-            <i class="align-middle" data-feather="shopping-bag"></i> <span class="align-middle">Commandes</span>
+        <li class="sidebar-item" [ngClass] = "{'active': router.url === '/orders'}">
+          <a class="sidebar-link" href="/orders">
+            <i class="align-middle" data-feather="shopping-bag"></i> <span class="align-middle">Commandes <span *ngIf="foodService.nbClientOrder!=0" class="badge badge-danger">({{foodService.nbClientOrder}})</span></span>
           </a>
         </li>
 

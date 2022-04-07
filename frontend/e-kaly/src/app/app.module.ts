@@ -15,6 +15,8 @@ import { OrderRestaurantComponent } from './restaurant/order-restaurant/order-re
 import { FoodsDeliverDeliveryManComponent } from './deliveryMan/foods-deliver-delivery-man/foods-deliver-delivery-man.component';
 import { OrderManagerComponent } from './manager/order-manager/order-manager.component';
 import { NgxContentLoadingModule } from 'ngx-content-loading';
+import { FoodDetailsClientComponent } from './pages/client/food-details-client/food-details-client.component';
+import { OrdersClientComponent } from './pages/client/orders-client/orders-client.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { NgxContentLoadingModule } from 'ngx-content-loading';
     OrderRestaurantComponent,
     FoodsDeliverDeliveryManComponent,
     OrderManagerComponent,
+    FoodDetailsClientComponent,
+    OrdersClientComponent,
   ],
   imports: [
     BrowserModule,

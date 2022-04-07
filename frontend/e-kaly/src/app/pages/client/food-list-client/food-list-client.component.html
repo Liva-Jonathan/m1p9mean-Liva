@@ -12,7 +12,7 @@
                 <h5 class="card-title title">{{food.name}}</h5>
                 <span class="card-subtitle price d-flex align-items-center"><i class="align-middle" data-feather="credit-card"></i> {{food.price}} Ar</span>
                 <p class="card-text restaurant d-flex align-items-center"><i class="align-middle" data-feather="home"></i> {{food.restaurant.name}}</p>
-                <button class="btn btn-outline-primary">Commander</button>
+                <a href="/foods/{{food._id}}" class="btn btn-outline-primary">Commander</a>
             </div>
         </div>
     </ng-container>

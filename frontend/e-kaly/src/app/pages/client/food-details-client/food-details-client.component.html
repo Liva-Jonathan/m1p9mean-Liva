@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body food-details-card food-img align-items-center">
+                <div *ngIf="food.isImageLoading" class="spinner-border text-secondary" role="status">
+                    <span class="sr-only"></span>
+                </div>
+                <img *ngIf="!food.isImageLoading" [src]="food.imageSrc">
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body food-details-card" [ngClass]="{'align-items-center': isFoodLoading}" >
+                <ng-container *ngIf="!isFoodLoading; else isLoading">
+                    <h1 class="card-title title">{{food.name}}</h1>
+                    <div class="price with-icon"><i class="align-middle" data-feather="credit-card"></i><span>{{food.price}} Ar</span></div>
+                    <div class="restaurant with-icon"><i class="align-middle" data-feather="home"></i><strong>{{food.restaurant.name}}</strong></div>
+                    <p>{{food.description}}</p>
+                    <input type="number" [(ngModel)]="quantity" name="quantity" class="form-control quantity-input" min="1" placeholder="Quantité">
+                    <button (click)="addToOrder()" class="btn btn-primary">Ajouter à la commande</button>
+                </ng-container>
+                <ng-template #isLoading>
+                    <div class="spinner-border text-secondary" role="status">
+                        <span class="sr-only"></span>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</div>
