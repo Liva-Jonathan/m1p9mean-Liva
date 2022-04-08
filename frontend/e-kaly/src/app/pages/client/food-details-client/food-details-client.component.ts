@@ -48,7 +48,7 @@ export class FoodDetailsClientComponent implements OnInit {
     localStorage.setItem("orders", JSON.stringify(orders));
     this.foodService.countClientOrder();
 
-    this.popup.success("Commande enregistrée");
+    this.popup.success("Commande enregistrée", "Cette commande a été enregistrée dans votre panier. Accédez à vos listes de commandes pour l'envoyer");
     this.router.navigateByUrl("/foods");
   }
 

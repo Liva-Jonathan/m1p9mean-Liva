@@ -12,7 +12,7 @@
             <i class="align-middle" data-feather="settings"></i>
           </a>
 
-          <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
+          <a class="nav-link dropdown-toggle d-none d-sm-inline-block" data-bs-toggle="dropdown">
             <strong *ngIf="authService.user" class="text-dark">{{authService.user.name}} {{authService.user.firstname}} ({{authService.user.userType}}) </strong>
           </a>
           <div class="dropdown-menu dropdown-menu-end">

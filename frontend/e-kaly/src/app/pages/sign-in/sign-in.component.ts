@@ -37,7 +37,7 @@ export class SignInComponent implements OnInit {
       this.authService.user = res.user;
       this.authService.token = res.token;
 
-      this.router.navigateByUrl(AuthService.USER_REDIRECT[auth.user.userType]);
+      this.router.navigateByUrl(AuthService.USER_REDIRECT[auth.user.userType]).then(() => { window.location.reload() });
     }
 
     const onError = (res : any) => {

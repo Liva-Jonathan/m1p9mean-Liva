@@ -90,8 +90,12 @@
               </table>
             
                 <div class="buttons">
-                    <button (click)="deleteAllOrders()" class="btn btn-danger">Tout effacer</button>
-                    <button class="btn btn-primary">Envoyer la commande</button>
+                    <button (click) = "deleteAllOrders()" class="btn btn-danger">Tout effacer</button>
+                    <button *ngIf = "!isOrderSending" (click) = "sendOrders()" class="btn btn-primary">Envoyer la commande</button>
+                    <button *ngIf = "isOrderSending" class="btn btn-lg btn-primary" type="button" disabled>
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        Envoi de la commande
+                    </button>
                 </div>
         </div>
     </div>

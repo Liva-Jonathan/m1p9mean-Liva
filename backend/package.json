@@ -14,5 +14,6 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.2.9",
     "mongoose-unique-validator": "^3.0.0"
-  }
+  },
+  "devDependencies": {}
 }

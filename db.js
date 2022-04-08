@@ -1,5 +1,7 @@
 /*** use e-kaly; ***/
 
+const { db } = require("./backend/models/Food")
+
 db.client.insert([
     { _id: ObjectId("111111111111111111111111"), name: "Rakoto", firstname: "Jean", address: "Lot 3 P Analakely", email: "jean@gmail.com", password: "$2a$10$0BAMMO1EGIjO11WYbofoEuNubRmzZOozERrpbxBcZA/3tTAwMHesq" },
     { _id: ObjectId("222222222222222222222222"), name: "Rabe", firstname: "Koto", address: "Lot 2H Anosy", email: "koto@gmail.com", password: "$2a$10$JnXV4wKwbqRipDYvV2OxB.Kur.UPAhzf3.fXAMZm9Xp6XGDW7/nE2" },
@@ -183,6 +185,15 @@ db.food.aggregate([
 	}
 ])
 
+// OrderCounter
+db.orderCounter.findAndModify({
+    query: { _id: "entry" },
+    update: { $inc: { sequence: 1 } },
+    new: true
+})
+
+// Find client with projection
+db.client.find({"_id": ObjectId("111111111111111111111111")}, { password:0 }).pretty()
 
 
 // db.order.aggregate([

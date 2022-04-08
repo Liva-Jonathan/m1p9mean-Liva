@@ -11,13 +11,13 @@
         </li>
 
         <li class="sidebar-item" [ngClass] = "{'active': router.url === '/foods'}">
-          <a class="sidebar-link" href="/foods">
+          <a class="sidebar-link" routerLink="/foods">
             <i class="align-middle" data-feather="package"></i> <span class="align-middle">Plats</span>
           </a>
         </li>
 
         <li class="sidebar-item" [ngClass] = "{'active': router.url === '/orders'}">
-          <a class="sidebar-link" href="/orders">
+          <a class="sidebar-link" routerLink="/orders">
             <i class="align-middle" data-feather="shopping-bag"></i> <span class="align-middle">Commandes <span *ngIf="foodService.nbClientOrder!=0" class="badge badge-danger">({{foodService.nbClientOrder}})</span></span>
           </a>
         </li>

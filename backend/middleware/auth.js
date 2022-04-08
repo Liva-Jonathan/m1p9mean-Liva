@@ -9,7 +9,7 @@ exports.authentified = (req, res, next) => {
     if (req.params.userId && req.params.userId != userId) {
       throw 'Invalid user ID';
     } else {
-      req.user = { userType: userType }
+      req.user = { userId: userId, userType: userType }
       next();
     }
   } catch {

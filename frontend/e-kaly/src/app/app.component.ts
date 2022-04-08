@@ -1,5 +1,5 @@
 import { Location } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './services/auth.service';
 
@@ -11,7 +11,7 @@ import { AuthService } from './services/auth.service';
 export class AppComponent {
   title = 'e-kaly';
 
-  constructor(public authService : AuthService, private router : Router, private location : Location) {
+  constructor(public authService : AuthService, private router : Router, private location : Location, private elementRef: ElementRef) {
   }
 
   ngOnInit() {

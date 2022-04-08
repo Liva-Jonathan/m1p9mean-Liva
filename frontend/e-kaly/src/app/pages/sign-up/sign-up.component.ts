@@ -28,7 +28,7 @@ export class SignUpComponent implements OnInit {
     this.loading.signup = true;
 
     const onSuccess = (res : any) => {
-      this.popup.success("Vous êtes bien inscrit. Connectez-vous pour accéder à nos services.");
+      this.popup.success("Succès", "Vous êtes bien inscrit. Connectez-vous pour accéder à nos services.");
       this.router.navigateByUrl("/login");
     }
 

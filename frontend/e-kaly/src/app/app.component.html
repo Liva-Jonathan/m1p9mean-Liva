@@ -1,19 +1,23 @@
-<div *ngIf = "authService.isConnected" class="wrapper">
-  <app-sidebar></app-sidebar>
+<ng-container *ngIf = "authService.isConnected; else notConnected">
+  <div class="wrapper">
+    <app-sidebar></app-sidebar>
+  
+    <div class="main">
+      <app-header></app-header>
+      
+      <main class="content" style="width: 100%;">
+        <div class="container-fluid p-0">
+  
+          <router-outlet></router-outlet>
+          
+        </div>
+      </main>
+  
+      <app-footer></app-footer>
+    </div>
+  </div>  
+</ng-container>
 
-  <div class="main">
-    <app-header></app-header>
-    
-    <main class="content" style="width: 100%;">
-      <div class="container-fluid p-0">
-
-        <router-outlet></router-outlet>
-        
-      </div>
-    </main>
-
-    <app-footer></app-footer>
-  </div>
-</div>
-
-<router-outlet *ngIf = "!authService.isConnected"></router-outlet>
+<ng-template #notConnected>
+  <router-outlet></router-outlet>
+</ng-template>
