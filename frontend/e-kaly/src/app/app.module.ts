@@ -11,12 +11,13 @@ import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FoodListClientComponent } from './pages/client/food-list-client/food-list-client.component';
-import { OrderRestaurantComponent } from './restaurant/order-restaurant/order-restaurant.component';
-import { FoodsDeliverDeliveryManComponent } from './deliveryMan/foods-deliver-delivery-man/foods-deliver-delivery-man.component';
-import { OrderManagerComponent } from './manager/order-manager/order-manager.component';
 import { NgxContentLoadingModule } from 'ngx-content-loading';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { FoodDetailsClientComponent } from './pages/client/food-details-client/food-details-client.component';
 import { OrdersClientComponent } from './pages/client/orders-client/orders-client.component';
+import { OrderRestaurantComponent } from './pages/restaurant/order-restaurant/order-restaurant.component';
+import { FoodsDeliverDeliveryManComponent } from './pages/deliveryMan/foods-deliver-delivery-man/foods-deliver-delivery-man.component';
+import { OrderManagerComponent } from './pages/manager/order-manager/order-manager.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { OrdersClientComponent } from './pages/client/orders-client/orders-clien
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    NgxContentLoadingModule 
+    NgxContentLoadingModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]

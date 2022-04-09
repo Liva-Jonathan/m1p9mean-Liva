@@ -10,7 +10,7 @@ import { PopupService } from 'src/app/services/popup.service';
 })
 export class SignInComponent implements OnInit {
 
-  user : any = { email: "peter@gmail.com", password: "peter" };
+  user : any = { email: "gastro@yahoo.fr", password: "gastro" };
 
   loading : any = { login: false };
 

@@ -33,7 +33,7 @@
                                         <span>Vous êtes nouveau ici ? <a routerLink="/sign-up">Inscrivez-vous.</a></span>
                                     </div>
                                     <div class="text-center mt-3">
-                                        <button *ngIf = "!loading.login" type="submit" (click) = "login()" class="btn btn-lg btn-primary"><i class="align-middle" data-feather="home"></i>Connexion</button>
+                                        <button *ngIf = "!loading.login" type="submit" (click) = "login()" class="btn btn-lg btn-primary">Connexion</button>
                                         <button *ngIf = "loading.login" class="btn btn-lg btn-primary" type="button" disabled>
                                             <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                                             Connexion

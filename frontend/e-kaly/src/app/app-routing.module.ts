@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { FoodsDeliverDeliveryManComponent } from './deliveryMan/foods-deliver-delivery-man/foods-deliver-delivery-man.component';
-import { OrderManagerComponent } from './manager/order-manager/order-manager.component';
 import { FoodDetailsClientComponent } from './pages/client/food-details-client/food-details-client.component';
 import { FoodListClientComponent } from './pages/client/food-list-client/food-list-client.component';
 import { OrdersClientComponent } from './pages/client/orders-client/orders-client.component';
+import { FoodsDeliverDeliveryManComponent } from './pages/deliveryMan/foods-deliver-delivery-man/foods-deliver-delivery-man.component';
+import { OrderManagerComponent } from './pages/manager/order-manager/order-manager.component';
+import { OrderRestaurantComponent } from './pages/restaurant/order-restaurant/order-restaurant.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
-import { OrderRestaurantComponent } from './restaurant/order-restaurant/order-restaurant.component';
 import { AuthUserGuard } from './router-guards/auth-user.guard';
 import { ClientUserGuard } from './router-guards/client-user.guard';
 import { DeliveryManUserGuard } from './router-guards/delivery-man-user.guard';
