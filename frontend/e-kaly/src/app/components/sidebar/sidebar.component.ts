@@ -10,9 +10,12 @@ import { FoodService } from 'src/app/services/food.service';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor(public router : Router, public foodService : FoodService) { }
+  userType: string;
+
+  constructor(public router : Router, public foodService : FoodService, private authService: AuthService) { }
 
   ngOnInit(): void {
+    this.userType = this.authService.getAuth().user.userType;
   }
 
 }

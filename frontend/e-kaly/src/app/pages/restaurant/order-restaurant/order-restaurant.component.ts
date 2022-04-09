@@ -11,20 +11,16 @@ import { ImageService } from 'src/app/services/image.service';
 })
 export class OrderRestaurantComponent implements OnInit {
 
-  todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
-
-  done = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
-
   ordersInProgress: any[];
   ordersReady: any[];
   isOrdersInProgressLoading: boolean = false;
-  isOrdersReadyLoading: boolean = false;  
+  isOrdersReadyLoading: boolean = false;
 
   constructor(private orderService: OrderService, private popup: PopupService, private imageService: ImageService) { }
 
   ngOnInit(): void {
     this.getOrdersInProgress();
-    this.getReadyOrdersInProgress();
+    this.getOrdersReady();
   }
 
   getOrdersInProgress() {
@@ -46,7 +42,7 @@ export class OrderRestaurantComponent implements OnInit {
     this.orderService.getOrderRestaurant().subscribe(onSuccess, onError);
   }
 
-  getReadyOrdersInProgress() {
+  getOrdersReady() {
     this.isOrdersReadyLoading = true;
 
     const onSuccess = (res : any) => {
@@ -74,7 +70,7 @@ export class OrderRestaurantComponent implements OnInit {
 
     const onSuccess = (res : any) => {
       this.getOrdersInProgress();
-      this.getReadyOrdersInProgress();
+      this.getOrdersReady();
     }
 
     const onError = (res : any) => {

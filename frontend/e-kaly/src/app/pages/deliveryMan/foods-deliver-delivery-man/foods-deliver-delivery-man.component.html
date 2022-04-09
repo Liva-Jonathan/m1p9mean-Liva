@@ -1,1 +1,51 @@
-<p>foods-deliver-delivery-man works!</p>
+<div class="row" cdkDropListGroup>
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">
+                    Commandes à livrer
+                    <div *ngIf="isOrdersReadyLoading" class="spinner-border text-secondary" role="status" style="font-size: 10px; width: 15px; height: 15px">
+                        <span class="sr-only"></span>
+                    </div>
+                </h2>
+                <div
+                    cdkDropList
+                    [cdkDropListData]="ordersReady"
+                    class="example-list"
+                    (cdkDropListDropped)="drop($event); orderToReady($event)">
+                    <div class="example-box order-box" *ngFor="let order of ordersReady" cdkDrag>
+                        <img class="elem_1" [src]="order.food.imageSrc" width="40" height="40">
+                        <span class="foodname elem_2">{{order.food.name}}</span>
+                        <strong class="elem_3">{{order.quantity}}</strong>
+                        <span class="note elem_4">({{order.order.numOrder}}: {{order.order.client.name}} {{order.order.client.firstname}})</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">
+                    Commandes Livrées
+                    <div *ngIf="isOrdersDeliveredLoading" class="spinner-border text-secondary" role="status" style="font-size: 10px; width: 15px; height: 15px">
+                        <span class="sr-only"></span>
+                    </div>
+                </h2>
+                <div
+                    cdkDropList
+                    [cdkDropListData]="ordersDelivered"
+                    class="example-list"
+                    (cdkDropListDropped)="drop($event); orderToDelivered($event)">
+                    <div class="example-box order-box" *ngFor="let order of ordersDelivered" cdkDrag>
+                        <img class="elem_1" [src]="order.food.imageSrc" width="40" height="40">
+                        <span class="foodname elem_2">{{order.food.name}}</span>
+                        <strong class="elem_3">{{order.quantity}}</strong>
+                        <span class="note elem_4">({{order.order.numOrder}}: {{order.order.client.name}} {{order.order.client.firstname}})</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

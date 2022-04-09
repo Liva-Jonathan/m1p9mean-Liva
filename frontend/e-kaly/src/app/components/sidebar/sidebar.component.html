@@ -5,7 +5,7 @@
         <span class="align-middle"> E-Kaly</span>
       </a>
 
-      <ul class="sidebar-nav">
+      <ul *ngIf="userType == 'Client'" class="sidebar-nav">
         <li class="sidebar-header">
           Client
         </li>
@@ -21,7 +21,42 @@
             <i class="align-middle" data-feather="shopping-bag"></i> <span class="align-middle">Commandes <span *ngIf="foodService.nbClientOrder!=0" class="badge badge-danger">({{foodService.nbClientOrder}})</span></span>
           </a>
         </li>
+      </ul>
 
+      <ul *ngIf="userType == 'Restaurant'" class="sidebar-nav">
+        <li class="sidebar-header">
+          Restaurant
+        </li>
+
+        <li class="sidebar-item" [ngClass] = "{'active': router.url === '/order-restaurant'}">
+          <a class="sidebar-link" routerLink="/order-restaurant">
+            <i class="align-middle" data-feather="shopping-bag"></i> <span class="align-middle">Commandes</span>
+          </a>
+        </li>
+
+        <li class="sidebar-item" [ngClass] = "{'active': router.url === '/foods-restaurant'}">
+          <a class="sidebar-link" routerLink="/foods-restaurant">
+            <i class="align-middle" data-feather="disc"></i> <span class="align-middle">Gestion des plats</span>
+          </a>
+        </li>
+
+        <li class="sidebar-item" [ngClass] = "{'active': router.url === '/income-restaurant'}">
+          <a class="sidebar-link" routerLink="/income-restaurantt">
+            <i class="align-middle" data-feather="dollar-sign"></i> <span class="align-middle">Bénéfices</span>
+          </a>
+        </li>
+      </ul>
+
+      <ul *ngIf="userType == 'DeliveryMan'" class="sidebar-nav">
+        <li class="sidebar-header">
+          Restaurant
+        </li>
+
+        <li class="sidebar-item" [ngClass] = "{'active': router.url === '/delivery'}">
+          <a class="sidebar-link" routerLink="/delivery">
+            <i class="align-middle" data-feather="truck"></i> <span class="align-middle">Commandes</span>
+          </a>
+        </li>
       </ul>
 
     </div>

@@ -30,6 +30,16 @@ export class AuthService {
     }
   }
 
+  getUser() {
+    if(this.user) return this.user;
+    return this.getAuth().user;
+  }
+
+  getToken() {
+    if(this.token) return this.token;
+    return this.getAuth().token;
+  }
+
   setUserAuth() {
     const auth = this.getAuth();
     console.log(auth);
