@@ -76,7 +76,7 @@
           </a>
         </li>
 
-        <li class="sidebar-item" [ngClass] = "{'active': router.url === '/deliveryMan'}">
+        <li class="sidebar-item" [ngClass] = "{'active': router.url === '/deliveryMan' || router.url === '/new-deliveryMan' || router.url.split('/')[1] === 'modify-deliveryMan'}">
           <a class="sidebar-link" routerLink="/deliveryMan">
             <span class="align-middle material-icons">delivery_dining</span> <span class="align-middle">Gestion des livreurs</span>
           </a>

@@ -89,7 +89,7 @@ export class FormRestaurantManagerComponent implements OnInit {
   }
 
   updateRestaurant() {
-    this.password = "a";
+    this.password = "none";
     if(!this.inputValid()) return;
     
     this.isRestaurantUpdating = true;

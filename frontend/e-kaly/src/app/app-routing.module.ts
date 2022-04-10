@@ -4,6 +4,8 @@ import { FoodDetailsClientComponent } from './pages/client/food-details-client/f
 import { FoodListClientComponent } from './pages/client/food-list-client/food-list-client.component';
 import { OrdersClientComponent } from './pages/client/orders-client/orders-client.component';
 import { FoodsDeliverDeliveryManComponent } from './pages/deliveryMan/foods-deliver-delivery-man/foods-deliver-delivery-man.component';
+import { DeliveryManListManagerComponent } from './pages/manager/delivery-man-list-manager/delivery-man-list-manager.component';
+import { FormDeliveryManManagerComponent } from './pages/manager/form-delivery-man-manager/form-delivery-man-manager.component';
 import { FormRestaurantManagerComponent } from './pages/manager/form-restaurant-manager/form-restaurant-manager.component';
 import { OrderManagerComponent } from './pages/manager/order-manager/order-manager.component';
 import { RestaurantListManagerComponent } from './pages/manager/restaurant-list-manager/restaurant-list-manager.component';
@@ -34,6 +36,9 @@ const routes: Routes = [
   { path: "restaurants", component: RestaurantListManagerComponent, canActivate: [AuthUserGuard, ManagerUserGuard] },
   { path: "new-restaurant", component: FormRestaurantManagerComponent, canActivate: [AuthUserGuard, ManagerUserGuard] },
   { path: "modify-restaurant/:restaurantId", component: FormRestaurantManagerComponent, canActivate: [AuthUserGuard, ManagerUserGuard] },
+  { path: "deliveryMan", component: DeliveryManListManagerComponent, canActivate: [AuthUserGuard, ManagerUserGuard] },
+  { path: "new-deliveryMan", component: FormDeliveryManManagerComponent, canActivate: [AuthUserGuard, ManagerUserGuard] },
+  { path: "modify-deliveryMan/:deliveryManId", component: FormDeliveryManManagerComponent, canActivate: [AuthUserGuard, ManagerUserGuard] },
 ];
 
 @NgModule({

@@ -20,6 +20,8 @@ import { FoodsDeliverDeliveryManComponent } from './pages/deliveryMan/foods-deli
 import { OrderManagerComponent } from './pages/manager/order-manager/order-manager.component';
 import { RestaurantListManagerComponent } from './pages/manager/restaurant-list-manager/restaurant-list-manager.component';
 import { FormRestaurantManagerComponent } from './pages/manager/form-restaurant-manager/form-restaurant-manager.component';
+import { DeliveryManListManagerComponent } from './pages/manager/delivery-man-list-manager/delivery-man-list-manager.component';
+import { FormDeliveryManManagerComponent } from './pages/manager/form-delivery-man-manager/form-delivery-man-manager.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,8 @@ import { FormRestaurantManagerComponent } from './pages/manager/form-restaurant-
     OrdersClientComponent,
     RestaurantListManagerComponent,
     FormRestaurantManagerComponent,
+    DeliveryManListManagerComponent,
+    FormDeliveryManManagerComponent,
   ],
   imports: [
     BrowserModule,

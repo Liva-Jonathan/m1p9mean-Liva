@@ -1,0 +1,50 @@
+<div class="row d-flex justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">Livreur
+                    <div *ngIf="isDeliveryManLoading" class="spinner-border text-secondary" role="status">
+                        <span class="sr-only"></span>
+                    </div>
+                </h2>
+                <div class="m-sm-4">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Nom</label>
+                            <input class="form-control form-control-lg" type="text" [(ngModel)] = "name" name="name" placeholder="Nom" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Prénom</label>
+                            <input class="form-control form-control-lg" type="text" [(ngModel)] = "firstname" name="firstname" placeholder="Adresse" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input class="form-control form-control-lg" type="email" [(ngModel)] = "email" name="email" placeholder="Email" />
+                        </div>
+                        <div *ngIf="!isPageModify" class="mb-3">
+                            <label class="form-label">Mot de passe</label>
+                            <input class="form-control form-control-lg" type="password" [(ngModel)] = "password" name="password" placeholder="Entrer un mot de passe" />
+                        </div>
+                        <div class="text-center mt-3">
+                            <ng-container *ngIf="!isPageModify; else buttonModify">
+                                <button *ngIf = "!isDeliveryManCreating" type="submit" (click) = "createDeliveryMan()" class="btn btn-lg btn-primary">Ajouter ce livreur</button>
+                                <button *ngIf = "isDeliveryManCreating" class="btn btn-lg btn-primary" type="button" disabled>
+                                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                    Ajout du livreur
+                                </button>
+                            </ng-container>
+
+                            <ng-template #buttonModify>
+                                <button *ngIf = "!isDeliveryManUpdating" type="submit" (click) = "updateDeliveryMan()" class="btn btn-lg btn-warning">Modifier ce livreur</button>
+                                <button *ngIf = "isDeliveryManUpdating" class="btn btn-lg btn-warning" type="button" disabled>
+                                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                    Modification du livreur
+                                </button>
+                            </ng-template>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
