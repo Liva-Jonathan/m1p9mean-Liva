@@ -70,7 +70,7 @@
           </a>
         </li>
 
-        <li class="sidebar-item" [ngClass] = "{'active': router.url === '/restaurants'}">
+        <li class="sidebar-item" [ngClass] = "{'active': router.url === '/restaurants' || router.url === '/new-restaurant' || router.url.split('/')[1] === 'modify-restaurant'}">
           <a class="sidebar-link" routerLink="/restaurants">
             <span class="align-middle material-icons">restaurant</span> <span class="align-middle">Gestion des restaurants</span>
           </a>

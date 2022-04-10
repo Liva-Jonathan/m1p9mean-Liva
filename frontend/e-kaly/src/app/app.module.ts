@@ -18,6 +18,8 @@ import { OrdersClientComponent } from './pages/client/orders-client/orders-clien
 import { OrderRestaurantComponent } from './pages/restaurant/order-restaurant/order-restaurant.component';
 import { FoodsDeliverDeliveryManComponent } from './pages/deliveryMan/foods-deliver-delivery-man/foods-deliver-delivery-man.component';
 import { OrderManagerComponent } from './pages/manager/order-manager/order-manager.component';
+import { RestaurantListManagerComponent } from './pages/manager/restaurant-list-manager/restaurant-list-manager.component';
+import { FormRestaurantManagerComponent } from './pages/manager/form-restaurant-manager/form-restaurant-manager.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { OrderManagerComponent } from './pages/manager/order-manager/order-manag
     OrderManagerComponent,
     FoodDetailsClientComponent,
     OrdersClientComponent,
+    RestaurantListManagerComponent,
+    FormRestaurantManagerComponent,
   ],
   imports: [
     BrowserModule,

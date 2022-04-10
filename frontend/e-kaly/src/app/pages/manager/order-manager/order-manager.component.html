@@ -36,7 +36,8 @@
                             <th scope="col"></th>
                             <th scope="col" class="text-center" style="width: 25%">Plat</th>
                             <th scope="col" class="text-center" style="width: 25%">Restaurant</th>
-                            <th scope="col" class="text-right" style="width: 20%">Prix</th>
+                            <th scope="col" class="text-center" style="width: 15%">Status</th>
+                            <th scope="col" class="text-right" style="width: 15%">Prix</th>
                             <th scope="col" class="text-right" style="width: 10%">Qte</th>
                             <th scope="col" class="text-right" style="width: 10%">Montant</th>
                           </tr>
@@ -47,6 +48,11 @@
                             <th class="img-container"><img [src]="orderDetails.food.imageSrc"></th>
                             <td class="text-center">{{orderDetails.food.name}}</td>
                             <td class="text-center">{{orderDetails.food.restaurant.name}}</td>
+                            <td class="text-center">
+                                <span *ngIf="!orderDetails.status || orderDetails.status == 'in progress'" class="badge badge-secondary">En préparation</span>
+                                <span *ngIf="orderDetails.status == 'ready'" class="badge badge-primary">Prêt</span>
+                                <span *ngIf="orderDetails.status == 'delivered'" class="badge badge-success">Livré</span>
+                            </td>
                             <td class="text-right">{{orderDetails.food.price}}</td>
                             <td class="text-right">{{orderDetails.quantity}}</td>
                             <td class="text-right">{{orderDetails.amount}}</td>

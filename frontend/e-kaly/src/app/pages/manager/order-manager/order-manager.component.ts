@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ImageService } from 'src/app/services/image.service';
 import { OrderService } from 'src/app/services/order.service';
 import { PopupService } from 'src/app/services/popup.service';
@@ -18,9 +19,10 @@ export class OrderManagerComponent implements OnInit {
 
   orderIdActive: string;
 
-  constructor(private popup: PopupService, private orderService: OrderService, private imageService: ImageService) { }
+  constructor(private popup: PopupService, private orderService: OrderService, private imageService: ImageService, private titleService: Title) { }
 
   ngOnInit(): void {
+    this.titleService.setTitle("Commandes E-Kaly");
     this.getOrders();
   }
 

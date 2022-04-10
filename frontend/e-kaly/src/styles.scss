@@ -123,3 +123,63 @@
 .material-icons {
   margin-right: 10px;
 }
+
+// Badge
+.badge-primary {
+  background-color: #0275d8;
+}
+
+.badge-secondary {
+  background-color: #292b2c;
+}
+
+.badge-success {
+  background-color: #5cb85c;
+}
+
+// Button
+.btn-danger {
+  background: #d9534f;
+}
+
+.btn-warning {
+  background: #f0ad4e;
+}
+
+// Table
+table {
+  thead {
+      background-color: #24354b;
+      color: white;
+  }
+  .text-right {
+      text-align: right !important;
+  }
+
+  .img-container {
+      // width: 80px;
+      img {
+          width: 30px;
+          height: 30px;
+      }
+  }
+
+  td{
+    button {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      width: 30px;
+      height: 30px;
+      .material-icons {
+        font-size: 17px;
+        margin: 0px !important;
+      }
+    }
+
+    &.btn-container {
+      display: flex;
+      gap: 5px;
+    }
+  }
+}

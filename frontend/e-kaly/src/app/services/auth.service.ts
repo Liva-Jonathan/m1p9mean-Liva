@@ -40,6 +40,14 @@ export class AuthService {
     return this.getAuth().token;
   }
 
+  createHeaders() {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + this.getToken()
+    });
+    return headers;
+  }
+
   setUserAuth() {
     const auth = this.getAuth();
     console.log(auth);
