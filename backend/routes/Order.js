@@ -15,5 +15,8 @@ router.put('/OrderDetails/:id', auth.authentified, auth.allowRestaurant, auth.al
 router.get('/ready', auth.authentified, auth.allowDeliveryMan, auth.checkAuthorisation, orderDetailsCtrl.getOrderDetailsReady);
 router.get('/delivered/DeliveryMan/:userId', auth.authentified, auth.allowDeliveryMan, auth.checkAuthorisation, orderDetailsCtrl.getOrderDetailsDeliveredDeliveryMan);
 
+router.get('/', auth.authentified, auth.allowManager, auth.checkAuthorisation, orderCtrl.getAllOrders);
+router.get('/:orderId/OrderDetails', auth.authentified, auth.allowManager, auth.checkAuthorisation, orderCtrl.getOrderDetails);
+
 
 module.exports = router;

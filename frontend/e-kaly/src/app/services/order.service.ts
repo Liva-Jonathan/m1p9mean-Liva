@@ -64,4 +64,20 @@ export class OrderService {
     return this.http.get(BASE_URL + '/Order/delivered/DeliveryMan/' + this.authService.getUser()._id, { headers });
   }
 
+  getAllOrders() {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + this.authService.getToken()
+    });
+    return this.http.get(BASE_URL + '/Order', { headers });
+  }
+
+  getOrderInfo(orderId: string) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + this.authService.getToken()
+    });
+    return this.http.get(BASE_URL + '/Order/' + orderId + '/OrderDetails', { headers });
+  }
+
 }

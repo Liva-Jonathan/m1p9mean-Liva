@@ -56,3 +56,70 @@
   .example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
     transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
   }
+
+// General Card Style
+.card {
+  .card-title {
+      font-size: 25px;
+      margin-bottom: 30px;
+
+      .spinner-border {
+        font-size: 10px;
+        width: 15px;
+        height: 15px;
+      }
+  }
+
+  .order-box {
+      display: flex;
+      text-align: center;
+      gap: 20px;
+      
+      padding: 10px 10px;
+      .foodname {
+          font-size: 16px;
+      }
+      .note {
+          font-size: 12px;
+      }
+      .elem_1 { flex: 0.5 }
+      .elem_2 { flex: 2; overflow: hidden }
+      .elem_3 { flex: 1 }
+      .elem_4 { flex: 2; overflow: hidden; }
+
+      img {
+          border-radius: 2px;
+      }
+
+  }
+}
+
+// Custom scrollbar
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+
+// icons
+@import 'material-icons/iconfont/filled.scss';
+
+.material-icons {
+  margin-right: 10px;
+}

@@ -21,7 +21,7 @@ exports.createOrder = (req, res, next) => {
             });
             order.save()
             .then((data) => {
-                createOrderDetails(data, req, res);
+                createOrderDetails(data.toObject(), req, res);
             })
             .catch(error => res.status(400).json({ error: error.message }));
         })
@@ -36,6 +36,7 @@ const createOrderDetails = (order, req, res) => {
     .then(orders => {
         let foods = orders.foods;
         const orderDetailsArray = [];
+        order._id = order._id.toString();
         for(let i=0; i<foods.length; i++) {
             const orderDetails = new OrderDetails({
                 order: order,
@@ -53,4 +54,29 @@ const createOrderDetails = (order, req, res) => {
     .catch(error => {
         res.status(500).json({ error : error.message });
     })
+}
+
+exports.getAllOrders = (req, res, next) => {
+    Order.find().sort({ "dateOrder": -1 }).lean()
+    .then(orders => {
+        res.status(200).json(orders);
+    })
+    .catch(error => res.status(500).json({ error : error.message }))
+}
+
+exports.getOrderDetails = (req, res, next) => {
+    OrderDetails.find({ "order._id": req.params.orderId }).lean()
+    .then(orderDetails => {
+        let amountTotal = 0;
+        for(let i=0; i<orderDetails.length; i++) {
+            orderDetails[i].amount = orderDetails[i].food.price * orderDetails[i].quantity;
+            amountTotal += orderDetails[i].amount;
+        }
+        const orderInfo = {
+            amountTotal: amountTotal,
+            orderDetails: orderDetails
+        }
+        res.status(200).json(orderInfo);
+    })
+    .catch(error => res.status(500).json({ error : error.message }))
 }
