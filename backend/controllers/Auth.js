@@ -70,7 +70,7 @@ exports.checkUser = (req, res, next) => {
             }
             res.status(200).json({
                 user: req.user,
-                token: jwt.sign({ userId: req.user._id, }, 'RANDOM_TOKEN_SECRET', { expiresIn: '24h' })
+                token: jwt.sign({ userId: req.user._id, userType: req.user.userType }, 'RANDOM_TOKEN_SECRET', { expiresIn: '24h' })
             });
         })
         .catch(error => {

@@ -1,0 +1,38 @@
+<div class="col-12">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">
+                Livreurs
+                <div *ngIf="isDeliveryMenLoading" class="spinner-border text-secondary" role="status">
+                    <span class="sr-only"></span>
+                </div>
+            </h2>
+            <div style="float: right; margin-bottom: 10px">
+                <a class="btn btn-primary" routerLink="/new-deliveryMan">+ Nouveau Livreur</a>
+            </div>
+            <table *ngIf="!isDeliveryMenLoading" class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th class="text-center">Nom</th>
+                    <th class="text-center">Prénom</th>
+                    <th class="text-center">Email</th>
+                    <th></th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor = "let deliveryMan of deliveryMen">
+                        <td class="text-center">{{deliveryMan.name}}</td>
+                        <td class="text-center">{{deliveryMan.firstname}}</td>
+                        <td class="text-center">{{deliveryMan.email}}</td>
+                        <td class="text-center btn-container">
+                            <button routerLink="/modify-deliveryMan/{{deliveryMan._id}}" class="btn btn-warning btn-sm"><span class="material-icons">edit</span></button>
+                            <button (click)="deleteDeliveryMan(deliveryMan._id)" class="btn btn-danger btn-sm"><span class="material-icons">delete</span></button>
+                        </td>
+                    </tr>
+                </tbody>
+
+              </table>
+        </div>
+    </div>
+</div>

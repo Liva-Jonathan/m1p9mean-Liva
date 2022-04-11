@@ -8,8 +8,7 @@ export class PopupService {
 
   constructor() { }
 
-  success(message : string) : void {
-    const title = "Success";
+  success(title : string, message : string) : void {
     const icon : SweetAlertIcon = "success";
     // Swal.fire(title, message, icon);
     Swal.fire({title: title, text: message, icon: icon, confirmButtonColor: "#5cb85c"});

@@ -1,0 +1,42 @@
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
+    grid-auto-rows: minmax(350px, auto);
+    grid-gap: 30px;
+
+    .card {
+        img {
+            height: 200px;
+        }
+        cursor: pointer;
+        transition: transform 0.2s;
+        &:hover {
+            transform: scale(1.02);
+        }
+    }
+    
+    .title {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .price {
+        color: green;
+        gap: 5px;
+    }
+    
+    .restaurant {
+        gap: 5px;
+    }
+
+    button {
+        margin-top: 5px;
+    }
+
+    .material-icons {
+        font-size: 18px;
+        margin-right: 0px;
+    }
+
+}

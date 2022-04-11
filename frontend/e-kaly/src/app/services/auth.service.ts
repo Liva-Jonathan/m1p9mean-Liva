@@ -13,6 +13,13 @@ export class AuthService {
   user : any;
   token: String = '';
 
+  public static readonly USER_REDIRECT : any = {
+    Client: '/foods',
+    Restaurant: '/order-restaurant',
+    DeliveryMan: '/delivery',
+    Manager: '/order-manager'
+  };
+
   constructor(private http: HttpClient, private router : Router, private popup : PopupService) {
     if(localStorage.getItem("auth")) {
       this.isConnected = true;
@@ -21,6 +28,24 @@ export class AuthService {
     if(this.isConnected && (!this.user || !this.token)) {
       this.setUserAuth();
     }
+  }
+
+  getUser() {
+    if(this.user) return this.user;
+    return this.getAuth().user;
+  }
+
+  getToken() {
+    if(this.token) return this.token;
+    return this.getAuth().token;
+  }
+
+  createHeaders() {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + this.getToken()
+    });
+    return headers;
   }
 
   setUserAuth() {
@@ -35,6 +60,8 @@ export class AuthService {
     }
 
     const onError = (res : any) => {
+      this.isConnected = false;
+      this.router.navigateByUrl("/");
       this.popup.error("Error " + res.status, res.error.error);
     }
     

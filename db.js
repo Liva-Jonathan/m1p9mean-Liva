@@ -1,5 +1,7 @@
 /*** use e-kaly; ***/
 
+const { db } = require("./backend/models/Food")
+
 db.client.insert([
     { _id: ObjectId("111111111111111111111111"), name: "Rakoto", firstname: "Jean", address: "Lot 3 P Analakely", email: "jean@gmail.com", password: "$2a$10$0BAMMO1EGIjO11WYbofoEuNubRmzZOozERrpbxBcZA/3tTAwMHesq" },
     { _id: ObjectId("222222222222222222222222"), name: "Rabe", firstname: "Koto", address: "Lot 2H Anosy", email: "koto@gmail.com", password: "$2a$10$JnXV4wKwbqRipDYvV2OxB.Kur.UPAhzf3.fXAMZm9Xp6XGDW7/nE2" },
@@ -54,7 +56,7 @@ db.order.insert([
         numOrder: "ORD1",
         dateOrder: new Date("2022-03-28T08:00:00"),
         client: {
-            idClient: "111111111111111111111111",
+            _id: "111111111111111111111111",
             name: "Rakoto",
             firstname: "Jean",
             address: "Lot 3 P Analakely",
@@ -66,7 +68,7 @@ db.order.insert([
         numOrder: "ORD2",
         dateOrder: new Date("2022-03-28T12:30:00"),
         client: {
-            idClient: "222222222222222222222222",
+            _id: "222222222222222222222222",
             name: "Rabe",
             firstname: "Koto",
             address: "Lot 2H Anosy",
@@ -79,11 +81,11 @@ db.orderDetails.insert([
     {
         _id: ObjectId("111111111111111111111111"),
         order: {
-            idOrder: "111111111111111111111111",
+            _id: "111111111111111111111111",
             numOrder: "ORD1",
             dateOrder: new Date("2022-03-28T08:00:00"),
             client: {
-                idClient: "111111111111111111111111",
+                _id: "111111111111111111111111",
                 name: "Rakoto",
                 firstname: "Jean",
                 address: "Lot 3 P Analakely",
@@ -91,10 +93,10 @@ db.orderDetails.insert([
             },
         },
         food: {
-            idFood: "111111111111111111111111",
+            _id: "111111111111111111111111",
             name: "Banana split", price: 5000, image: "banana-split.jpg",
             restaurant: {
-                idRestaurant: "111111111111111111111111",
+                _id: "111111111111111111111111",
                 name: "The Capital Grille",
                 address: "Lot 24 Ter Andoharanofotsy",
                 email: "grille@yahoo.fr"
@@ -105,11 +107,11 @@ db.orderDetails.insert([
     {
         _id: ObjectId("222222222222222222222222"),
         order: {
-            idOrder: "111111111111111111111111",
+            _id: "111111111111111111111111",
             numOrder: "ORD1",
             dateOrder: new Date("2022-03-28T08:00:00"),
             client: {
-                idClient: "111111111111111111111111",
+                _id: "111111111111111111111111",
                 name: "Rakoto",
                 firstname: "Jean",
                 address: "Lot 3 P Analakely",
@@ -117,10 +119,10 @@ db.orderDetails.insert([
             },
         },
         food: {
-            idFood: "444444444444444444444444",
+            _id: "444444444444444444444444",
             name: "Pizza", price: 12000, image: "pizza.jpg",
             restaurant: {
-                idRestaurant: "222222222222222222222222",
+                _id: "222222222222222222222222",
                 name: "Gastronomie Pizza",
                 address: "Lot IFJ 12 Bis Analakely",
                 email: "gastro@yahoo.fr"
@@ -132,11 +134,11 @@ db.orderDetails.insert([
     {
         _id: ObjectId("333333333333333333333333"),
         order: {
-            idOrder: "222222222222222222222222",
+            _id: "222222222222222222222222",
             numOrder: "ORD2",
             dateOrder: new Date("2022-03-28T12:30:00"),
             client: {
-                idClient: "222222222222222222222222",
+                _id: "222222222222222222222222",
                 name: "Rabe",
                 firstname: "Koto",
                 address: "Lot 2H Anosy",
@@ -144,10 +146,10 @@ db.orderDetails.insert([
             },
         },
         food: {
-            idFood: "222222222222222222222222",
+            _id: "222222222222222222222222",
             name: "Burger", price: 10000, image: "burger.jpg",
             restaurant: {
-                idRestaurant: "111111111111111111111111",
+                _id: "111111111111111111111111",
                 name: "The Capital Grille",
                 address: "Lot 24 Ter Andoharanofotsy",
                 email: "grille@yahoo.fr"
@@ -156,11 +158,43 @@ db.orderDetails.insert([
         quantity: 2,
         status: "delivered",
         deliveryMan: {
-            idDeliveryMan: "222222222222222222222222",
+            _id: "222222222222222222222222",
             name: "Daniel", firstname: "Noa", email: "noa@gmail.com"
         }
     }
 ])
+
+
+// Food joining Restaurant
+
+db.food.aggregate([
+	{
+		$addFields: {
+			idRestaurant: {
+				$toObjectId: "$idRestaurant"
+			}
+		}	
+	},
+	{	
+		$lookup: {
+			from: "restaurant",
+			localField: "idRestaurant",
+			foreignField: "_id",
+			as: "restaurant"
+		}
+	}
+])
+
+// OrderCounter
+db.orderCounter.findAndModify({
+    query: { _id: "entry" },
+    update: { $inc: { sequence: 1 } },
+    new: true
+})
+
+// Find client with projection
+db.client.find({"_id": ObjectId("111111111111111111111111")}, { password:0 }).pretty()
+
 
 // db.order.aggregate([
 //     { $project: { field: { $concat: ["a", "b"] } } }

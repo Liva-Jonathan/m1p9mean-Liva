@@ -22,16 +22,13 @@ export class SignUpComponent implements OnInit {
   constructor(private authService : AuthService, private popup : PopupService, private router : Router) { }
 
   ngOnInit(): void {
-    if(this.authService.isConnected) {
-      this.router.navigateByUrl("/foods");
-    }
   }
 
   signup(): void {
     this.loading.signup = true;
 
     const onSuccess = (res : any) => {
-      this.popup.success("Vous êtes bien inscrit. Connectez-vous pour accéder à nos services.");
+      this.popup.success("Succès", "Vous êtes bien inscrit. Connectez-vous pour accéder à nos services.");
       this.router.navigateByUrl("/login");
     }
 

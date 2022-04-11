@@ -1,0 +1,39 @@
+.food-details-card {
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    .title {
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+    .price {
+        color: green;
+        font-size: 20px;
+    }
+    .restaurant {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+    .with-icon {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .quantity-input {
+        margin-top: 30px;
+    }
+    button {
+        width: 100%;
+        margin-top: 20px;
+    }
+}
+.food-img {
+    img{
+        width: 100%;
+        height: 100%;
+        border-radius: 5px;
+    }
+}

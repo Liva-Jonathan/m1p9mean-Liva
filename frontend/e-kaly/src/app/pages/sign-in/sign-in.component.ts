@@ -10,7 +10,7 @@ import { PopupService } from 'src/app/services/popup.service';
 })
 export class SignInComponent implements OnInit {
 
-  user : any = { email: "peter@gmail.com", password: "peter" };
+  user : any = { email: "", password: "" };
 
   loading : any = { login: false };
 
@@ -19,9 +19,6 @@ export class SignInComponent implements OnInit {
   constructor(private authService : AuthService, private popup : PopupService, private router : Router) { }
 
   ngOnInit(): void {
-    if(this.authService.isConnected) {
-      this.router.navigateByUrl("/foods");
-    }
   }
 
   login() {
@@ -40,7 +37,7 @@ export class SignInComponent implements OnInit {
       this.authService.user = res.user;
       this.authService.token = res.token;
 
-      this.router.navigateByUrl("/foods");
+      this.router.navigateByUrl(AuthService.USER_REDIRECT[auth.user.userType]).then(() => { window.location.reload() });
     }
 
     const onError = (res : any) => {

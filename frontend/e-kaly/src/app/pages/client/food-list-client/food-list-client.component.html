@@ -1,7 +1,58 @@
-<h1 class="h3 mb-3"><strong>Plats</strong> </h1>
 
-<div class="row">
-    <div class="col-12">
+<div class="card-container">
+    <ng-container *ngIf="foods; else foodsLoading">
+        <div *ngFor = "let food of foods" class="card">
+            <div *ngIf="food.isImageLoading">
+                <ngx-content-loading [speed]="'1500ms'" [width]="800" [height]="430">
+                    <svg:g ngx-rect width="100%" height="100%" y="0" x="0" rx="0" ry="0"></svg:g>
+                </ngx-content-loading>
+            </div>
+            <img *ngIf="!food.isImageLoading" [src]="food.imageSrc" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title title">{{food.name}}</h5>
+                <span class="card-subtitle price d-flex align-items-center">{{food.price}} Ar</span>
+                <p class="card-text restaurant d-flex align-items-center"><span class="material-icons">restaurant</span> {{food.restaurant.name}}</p>
+                <a routerLink="/foods/{{food._id}}" class="btn btn-outline-primary">Commander</a>
+            </div>
+        </div>
+    </ng-container>
+    
+
+    <ng-template #foodsLoading>
+        <div *ngFor = "let i of [].constructor(6)" class="card">
+            <ngx-content-loading [speed]="'1500ms'" [width]="800" [height]="430">
+                <svg:g ngx-rect width="100%" height="100%" y="0" x="0" rx="0" ry="0"></svg:g>
+            </ngx-content-loading>
+            <div class="card-body">
+                <h5 class="card-title title">
+                    <ngx-content-loading [speed]="'1500ms'" [width]="800" [height]="70">
+                        <svg:g ngx-rect width="100%" height="100%" y="0" x="0" rx="10" ry="10"></svg:g>
+                    </ngx-content-loading>
+                </h5>
+                <div style="margin-top: -5px">
+                    <ngx-content-loading [speed]="'1500ms'" [width]="800" [height]="40">
+                        <svg:g ngx-rect width="30%" height="100%" y="0" x="0" rx="10" ry="10"></svg:g>
+                    </ngx-content-loading>
+                </div>
+                <div>
+                    <ngx-content-loading [speed]="'1500ms'" [width]="800" [height]="40">
+                        <svg:g ngx-rect width="70%" height="100%" y="0" x="0" rx="10" ry="10"></svg:g>
+                    </ngx-content-loading>
+                </div>
+                <div style="margin-top: 18px">
+                    <ngx-content-loading [speed]="'1500ms'" [width]="800" [height]="80">
+                        <svg:g ngx-rect width="40%" height="100%" y="0" x="0" rx="10" ry="10"></svg:g>
+                    </ngx-content-loading>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+    
+</div>
+
+
+
+    <!-- <div class="col-12">
     <div class="card">
         <div class="card-header">
         <h5 class="card-title mb-0">Empty card</h5>
@@ -9,5 +60,4 @@
         <div class="card-body">
         </div>
     </div>
-    </div>
-</div>
+    </div> -->

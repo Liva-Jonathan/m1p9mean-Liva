@@ -1,0 +1,50 @@
+<div class="row d-flex justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">Plat
+                    <div *ngIf="isFoodLoading" class="spinner-border text-secondary" role="status">
+                        <span class="sr-only"></span>
+                    </div>
+                </h2>
+                <div class="m-sm-4">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Nom</label>
+                            <input class="form-control form-control-lg" type="text" [(ngModel)] = "name" name="name" placeholder="Nom" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Price</label>
+                            <input class="form-control form-control-lg" type="number" [(ngModel)] = "price" name="price" placeholder="Adresse" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Image</label>
+                            <input class="form-control form-control-lg" type="file" (change)="onFileSelected($event)" name="image" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Description</label>
+                            <textarea class="form-control form-control-lg" type="text" [(ngModel)] = "description" name="description"></textarea>
+                        </div>
+                        <div class="text-center mt-3">
+                            <ng-container *ngIf="!isPageModify; else buttonModify">
+                                <button *ngIf = "!isFoodCreating" type="submit" (click) = "createFood()" class="btn btn-lg btn-primary">Ajouter ce plat</button>
+                                <button *ngIf = "isFoodCreating" class="btn btn-lg btn-primary" type="button" disabled>
+                                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                    Ajout du plat
+                                </button>
+                            </ng-container>
+
+                            <ng-template #buttonModify>
+                                <button *ngIf = "!isFoodUpdating" type="submit" (click) = "updateFood()" class="btn btn-lg btn-warning">Modifier ce plat</button>
+                                <button *ngIf = "isFoodUpdating" class="btn btn-lg btn-warning" type="button" disabled>
+                                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                    Modification du plat
+                                </button>
+                            </ng-template>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

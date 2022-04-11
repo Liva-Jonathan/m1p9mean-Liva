@@ -1,0 +1,40 @@
+<div class="col-12">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">
+                Plats
+                <div *ngIf="isFoodsLoading" class="spinner-border text-secondary" role="status">
+                    <span class="sr-only"></span>
+                </div>
+            </h2>
+            <div style="float: right; margin-bottom: 10px">
+                <a class="btn btn-primary" routerLink="/new-food">+ Nouveau Plat</a>
+            </div>
+            <table *ngIf="!isFoodsLoading" class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th class="text-center">Img</th>
+                    <th class="text-center">Nom</th>
+                    <th class="text-center">Prix (Ar)</th>
+                    <th class="text-center">Description</th>
+                    <th></th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor = "let food of foods">
+                        <td class="text-center img-container"><img [src]="food.imageSrc"></td>
+                        <td class="text-center">{{food.name}}</td>
+                        <td class="text-center" style="width: 10%;">{{food.price}}</td>
+                        <td class="text-center">{{ (food.description.length>60)? (food.description | slice:0:60)+'...':(food.description) }}</td>
+                        <td class="text-center btn-container">
+                            <button routerLink="/modify-food/{{food._id}}" class="btn btn-warning btn-sm"><span class="material-icons">edit</span></button>
+                            <button (click)="deleteFood(food._id)" class="btn btn-danger btn-sm"><span class="material-icons">delete</span></button>
+                        </td>
+                    </tr>
+                </tbody>
+
+              </table>
+        </div>
+    </div>
+</div>

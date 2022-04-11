@@ -1,0 +1,27 @@
+nav {
+    // position: fixed;
+    // z-index: 5;
+    // top: 0;
+    // left: 300px;
+    // right: 0;
+    // width: 100%;
+
+    .title {
+        font-size: 25px;
+        margin-left: 20px;
+    }
+    
+    .input-group-text {
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+    }
+
+    input {
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+    }
+    .material-icons {
+        margin-right: 0px;
+    }
+}
+

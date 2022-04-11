@@ -30,7 +30,7 @@
                                         <input class="form-control form-control-lg" type="password" [(ngModel)] = "user.password" name="password" placeholder="Entrer votre mot de passe" />              
                                     </div>
                                     <div>
-                                        <span>Vous êtes nouveau ici ? <a href="/sign-up">Inscrivez-vous.</a></span>
+                                        <span>Vous êtes nouveau ici ? <a routerLink="/sign-up">Inscrivez-vous.</a></span>
                                     </div>
                                     <div class="text-center mt-3">
                                         <button *ngIf = "!loading.login" type="submit" (click) = "login()" class="btn btn-lg btn-primary">Connexion</button>

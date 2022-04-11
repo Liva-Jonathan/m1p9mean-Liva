@@ -5,23 +5,88 @@
         <span class="align-middle"> E-Kaly</span>
       </a>
 
-      <ul class="sidebar-nav">
+      <ul *ngIf="userType == 'Client'" class="sidebar-nav">
         <li class="sidebar-header">
           Client
         </li>
 
-        <li class="sidebar-item" [ngClass] = "{'active': router.url === '/foods'}">
-          <a class="sidebar-link" href="/foods">
-            <i class="align-middle" data-feather="package"></i> <span class="align-middle">Plats</span>
+        <li class="sidebar-item" [ngClass] = "{'active': router.url === '/foods'|| router.url.split('/')[1] === 'foods'}">
+          <a class="sidebar-link" routerLink="/foods">
+            <span class="align-middle material-icons">fastfood</span> <span class="align-middle">Plats</span>
           </a>
         </li>
 
-        <li class="sidebar-item">
-          <a class="sidebar-link" href="">
-            <i class="align-middle" data-feather="shopping-bag"></i> <span class="align-middle">Commandes</span>
+        <li class="sidebar-item" [ngClass] = "{'active': router.url === '/orders'}">
+          <a class="sidebar-link" routerLink="/orders">
+            <span class="align-middle material-icons">shopping_bag</span> <span class="align-middle">Commandes <span *ngIf="foodService.nbClientOrder!=0" class="badge badge-danger">{{foodService.nbClientOrder}}</span></span>
+          </a>
+        </li>
+      </ul>
+
+      <ul *ngIf="userType == 'Restaurant'" class="sidebar-nav">
+        <li class="sidebar-header">
+          Restaurant
+        </li>
+
+        <li class="sidebar-item" [ngClass] = "{'active': router.url === '/order-restaurant'}">
+          <a class="sidebar-link" routerLink="/order-restaurant">
+            <span class="align-middle material-icons">shopping_bag</span> <span class="align-middle">Commandes</span>
           </a>
         </li>
 
+        <li class="sidebar-item" [ngClass] = "{'active': router.url === '/foods-restaurant' || router.url === '/new-food' || router.url.split('/')[1] === 'modify-food'}">
+          <a class="sidebar-link" routerLink="/foods-restaurant">
+            <span class="align-middle material-icons">fastfood</span> <span class="align-middle">Gestion des plats</span>
+          </a>
+        </li>
+
+        <!-- <li class="sidebar-item" [ngClass] = "{'active': router.url === '/income-restaurant'}">
+          <a class="sidebar-link" routerLink="/income-restaurant">
+            <span class="align-middle material-icons">attach_money</span> <span class="align-middle">Bénéfices</span>
+          </a>
+        </li> -->
+      </ul>
+
+      <ul *ngIf="userType == 'DeliveryMan'" class="sidebar-nav">
+        <li class="sidebar-header">
+          Livreur
+        </li>
+
+        <li class="sidebar-item" [ngClass] = "{'active': router.url === '/delivery'}">
+          <a class="sidebar-link" routerLink="/delivery">
+            <span class="align-middle material-icons">delivery_dining</span> <span class="align-middle">Commandes</span>
+          </a>
+        </li>
+      </ul>
+
+      <ul *ngIf="userType == 'Manager'" class="sidebar-nav">
+        <li class="sidebar-header">
+          Responsable E-Kaly
+        </li>
+
+        <li class="sidebar-item" [ngClass] = "{'active': router.url === '/order-manager'}">
+          <a class="sidebar-link" routerLink="/order-manager">
+            <span class="align-middle material-icons">shopping_bag</span> <span class="align-middle">Commandes</span>
+          </a>
+        </li>
+
+        <li class="sidebar-item" [ngClass] = "{'active': router.url === '/restaurants' || router.url === '/new-restaurant' || router.url.split('/')[1] === 'modify-restaurant'}">
+          <a class="sidebar-link" routerLink="/restaurants">
+            <span class="align-middle material-icons">restaurant</span> <span class="align-middle">Gestion des restaurants</span>
+          </a>
+        </li>
+
+        <li class="sidebar-item" [ngClass] = "{'active': router.url === '/deliveryMan' || router.url === '/new-deliveryMan' || router.url.split('/')[1] === 'modify-deliveryMan'}">
+          <a class="sidebar-link" routerLink="/deliveryMan">
+            <span class="align-middle material-icons">delivery_dining</span> <span class="align-middle">Gestion des livreurs</span>
+          </a>
+        </li>
+
+        <!-- <li class="sidebar-item" [ngClass] = "{'active': router.url === '/income-manager'}">
+          <a class="sidebar-link" routerLink="/income-manager">
+            <span class="align-middle material-icons">attach_money</span> <span class="align-middle">Bénéfices</span>
+          </a>
+        </li> -->
       </ul>
 
     </div>

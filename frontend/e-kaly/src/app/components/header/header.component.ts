@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { FoodService } from 'src/app/services/food.service';
 
 @Component({
   selector: 'app-header',
@@ -8,9 +11,15 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public authService : AuthService) { }
+  search: string;
+
+  constructor(public authService : AuthService, public titleService : Title, public router: Router, public foodService: FoodService) { }
 
   ngOnInit(): void {
+  }
+
+  searchFood() {
+    this.foodService.search(this.search);
   }
 
 }

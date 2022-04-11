@@ -1,0 +1,50 @@
+<div class="row d-flex justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">Restaurant
+                    <div *ngIf="isRestaurantLoading" class="spinner-border text-secondary" role="status">
+                        <span class="sr-only"></span>
+                    </div>
+                </h2>
+                <div class="m-sm-4">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Nom</label>
+                            <input class="form-control form-control-lg" type="text" [(ngModel)] = "name" name="name" placeholder="Nom" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Adresse</label>
+                            <input class="form-control form-control-lg" type="text" [(ngModel)] = "address" name="address" placeholder="Adresse" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input class="form-control form-control-lg" type="email" [(ngModel)] = "email" name="email" placeholder="Email" />
+                        </div>
+                        <div *ngIf="!isPageModify" class="mb-3">
+                            <label class="form-label">Mot de passe</label>
+                            <input class="form-control form-control-lg" type="password" [(ngModel)] = "password" name="password" placeholder="Entrer un mot de passe" />
+                        </div>
+                        <div class="text-center mt-3">
+                            <ng-container *ngIf="!isPageModify; else buttonModify">
+                                <button *ngIf = "!isRestaurantCreating" type="submit" (click) = "createRestaurant()" class="btn btn-lg btn-primary">Ajouter ce restaurant</button>
+                                <button *ngIf = "isRestaurantCreating" class="btn btn-lg btn-primary" type="button" disabled>
+                                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                    Ajout du restaurant
+                                </button>
+                            </ng-container>
+
+                            <ng-template #buttonModify>
+                                <button *ngIf = "!isRestaurantUpdating" type="submit" (click) = "updateRestaurant()" class="btn btn-lg btn-warning">Modifier ce restaurant</button>
+                                <button *ngIf = "isRestaurantUpdating" class="btn btn-lg btn-warning" type="button" disabled>
+                                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                    Modification du restaurant
+                                </button>
+                            </ng-template>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
