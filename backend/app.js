@@ -11,7 +11,7 @@ const deliveryManRoutes = require('./routes/DeliveryMan');
 
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/e-kaly', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb+srv://e-kaly:e-kaly@cluster0.lbu4z.mongodb.net/e-kaly?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('Connexion à MongoDB réussie !'))
     .catch(() => console.log('Connexion à MongoDB échouée !'));
 
