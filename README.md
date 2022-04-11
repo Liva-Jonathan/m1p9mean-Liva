@@ -2,13 +2,9 @@
 
 ## Short Description
 
-***
-
 E-Kaly website for delivery company that allows you to order food from various restaurants and get delivered to where you want.
 
 ## Auteur
-
-***
 
 > Andriamihaja Liva Jonathan  
 > M1 P9  
@@ -16,16 +12,12 @@ E-Kaly website for delivery company that allows you to order food from various r
 
 ## Lien vers site
 
-***
-
 > Site Frontend: https://e-kaly-mean.herokuapp.com/
 
 >API: https://e-kaly-backend.herokuapp.com/api
 
 
 ## User Login et Mdp
-
-***
 
 ### Client
 
@@ -52,8 +44,6 @@ E-Kaly website for delivery company that allows you to order food from various r
 
 
 ## Précision sur fonctionnalités
-
-***
 
 **Login :** pour tous profils  
 **Inscription :** pour client  
