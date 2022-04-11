@@ -1,6 +1,7 @@
 var express = require('express');
 
 const path = require('path');
+var bodyParser = require('body-parser');
 
 const authRoutes = require('./routes/Auth');
 const foodRoutes = require('./routes/Food');
@@ -16,6 +17,9 @@ mongoose.connect('mongodb://localhost:27017/e-kaly', { useNewUrlParser: true, us
 
 
 var app = express();
+
+app.use(bodyParser.json({limit:'5mb'})); 
+app.use(bodyParser.urlencoded({extended:true, limit:'5mb'}));
 
 /* For CORS errors */
 app.use((req, res, next) => {
@@ -35,6 +39,6 @@ app.use('/api/Order', orderRoutes);
 app.use('/api/Restaurant', restaurantRoutes);
 app.use('/api/DeliveryMan', deliveryManRoutes);
 
-app.listen(3000, function() {
-    console.log("Server is running on port 3000");
+app.listen(process.env.PORT || 3000, function() {
+    console.log("Server is running on port " + (process.env.PORT || 3000));
 });

@@ -36,4 +36,39 @@ export class FoodService {
     this.nbClientOrder = orders ? orders.length : 0;
   }
 
+  getFoodsRestaurant(restaurantId: string) {
+    return this.http.get(BASE_URL + '/Restaurant/' + restaurantId + '/Food', { headers: this.authService.createHeaders() });
+  }
+
+  createFood(food: any) {
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.authService.getToken()
+    });
+
+    const formData: FormData = new FormData();
+    formData.append('name', food.name);
+    formData.append('price', food.price);
+    formData.append('image', food.imageFile);
+    formData.append('description', food.description);
+    formData.append('idRestaurant', food.idRestaurant);
+    return this.http.post(BASE_URL + '/Food', formData, { headers: headers });
+  }
+
+  updateFood(id: string, food: any) {
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.authService.getToken()
+    });
+
+    const formData: FormData = new FormData();
+    formData.append('name', food.name);
+    formData.append('price', food.price);
+    formData.append('image', food.imageFile);
+    formData.append('description', food.description);
+    return this.http.put(BASE_URL + '/Food/' + id, formData, { headers: headers });
+  }
+
+  deleteFood(id: string) {
+    return this.http.delete(BASE_URL + '/Food/' + id, { headers: this.authService.createHeaders() });
+  }
+
 }

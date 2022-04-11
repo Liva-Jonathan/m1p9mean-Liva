@@ -10,7 +10,7 @@
           Client
         </li>
 
-        <li class="sidebar-item" [ngClass] = "{'active': router.url === '/foods'}">
+        <li class="sidebar-item" [ngClass] = "{'active': router.url === '/foods'|| router.url.split('/')[1] === 'foods'}">
           <a class="sidebar-link" routerLink="/foods">
             <span class="align-middle material-icons">fastfood</span> <span class="align-middle">Plats</span>
           </a>
@@ -34,7 +34,7 @@
           </a>
         </li>
 
-        <li class="sidebar-item" [ngClass] = "{'active': router.url === '/foods-restaurant'}">
+        <li class="sidebar-item" [ngClass] = "{'active': router.url === '/foods-restaurant' || router.url === '/new-food' || router.url.split('/')[1] === 'modify-food'}">
           <a class="sidebar-link" routerLink="/foods-restaurant">
             <span class="align-middle material-icons">fastfood</span> <span class="align-middle">Gestion des plats</span>
           </a>

@@ -1,3 +1,5 @@
+const mongoose = require('mongoose');
+
 const Food = require('../models/Food');
 
 const utils = require('../services/Utils');
@@ -41,6 +43,35 @@ exports.getOneFood = (req, res) => {
         res.status(500).json({ error : error.message });
     })
 }
+
+exports.getFoodsOfRestaurant = (req, res) => {
+    Food.aggregate([joinRestaurantAddFields, joinRestaurantLookup, {$unwind: '$restaurant'}, {
+        $match: {
+            "idRestaurant": mongoose.Types.ObjectId(req.params.restaurantId)
+        }
+    }])
+    .then(foods => res.status(200).json(foods))
+    .catch(error => res.status(500).json({ error : error.message }))
+}
+
+exports.create = (req, res, next) => {
+    const food = new Food({ ...req.body, image: req.file.filename});
+    food.save()
+    .then(() => res.status(201).json({ message: 'Food created !'}))
+    .catch(error => res.status(400).json({ error: error.message }));
+}
+
+exports.modify = (req, res, next) => {
+    Food.updateOne({ _id: req.params.id }, { ...req.body, image: req.file.filename })
+        .then(() => res.status(200).json({ message: 'Food updated !'}))
+        .catch(error => res.status(400).json({ error: error.message }));
+};
+
+exports.delete = (req, res, next) => {
+    Food.deleteOne({ _id: req.params.id })
+      .then(() => res.status(200).json({ message: 'Food deleted !'}))
+      .catch(error => res.status(400).json({ error: error.message }));
+};
 
 exports.getEvaluationOrder = (foodOrders) => {
     return new Promise((resolve, reject) => {

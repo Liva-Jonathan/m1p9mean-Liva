@@ -9,6 +9,8 @@ import { FormDeliveryManManagerComponent } from './pages/manager/form-delivery-m
 import { FormRestaurantManagerComponent } from './pages/manager/form-restaurant-manager/form-restaurant-manager.component';
 import { OrderManagerComponent } from './pages/manager/order-manager/order-manager.component';
 import { RestaurantListManagerComponent } from './pages/manager/restaurant-list-manager/restaurant-list-manager.component';
+import { FoodListRestaurantComponent } from './pages/restaurant/food-list-restaurant/food-list-restaurant.component';
+import { FormFoodRestaurantComponent } from './pages/restaurant/form-food-restaurant/form-food-restaurant.component';
 import { OrderRestaurantComponent } from './pages/restaurant/order-restaurant/order-restaurant.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
@@ -29,6 +31,9 @@ const routes: Routes = [
   { path: "orders", component: OrdersClientComponent, canActivate: [AuthUserGuard, ClientUserGuard] },
 
   { path: "order-restaurant", component: OrderRestaurantComponent, canActivate: [AuthUserGuard, RestaurantUserGuard] },
+  { path: "foods-restaurant", component: FoodListRestaurantComponent, canActivate: [AuthUserGuard, RestaurantUserGuard] },
+  { path: "new-food", component: FormFoodRestaurantComponent, canActivate: [AuthUserGuard, RestaurantUserGuard] },
+  { path: "modify-food/:foodId", component: FormFoodRestaurantComponent, canActivate: [AuthUserGuard, RestaurantUserGuard] },
 
   { path: "delivery", component: FoodsDeliverDeliveryManComponent, canActivate: [AuthUserGuard, DeliveryManUserGuard] },
   
