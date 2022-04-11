@@ -18,7 +18,7 @@
 
         <li class="sidebar-item" [ngClass] = "{'active': router.url === '/orders'}">
           <a class="sidebar-link" routerLink="/orders">
-            <span class="align-middle material-icons">shopping_bag</span> <span class="align-middle">Commandes <span *ngIf="foodService.nbClientOrder!=0" class="badge badge-danger">({{foodService.nbClientOrder}})</span></span>
+            <span class="align-middle material-icons">shopping_bag</span> <span class="align-middle">Commandes <span *ngIf="foodService.nbClientOrder!=0" class="badge badge-danger">{{foodService.nbClientOrder}}</span></span>
           </a>
         </li>
       </ul>
@@ -40,11 +40,11 @@
           </a>
         </li>
 
-        <li class="sidebar-item" [ngClass] = "{'active': router.url === '/income-restaurant'}">
+        <!-- <li class="sidebar-item" [ngClass] = "{'active': router.url === '/income-restaurant'}">
           <a class="sidebar-link" routerLink="/income-restaurant">
             <span class="align-middle material-icons">attach_money</span> <span class="align-middle">Bénéfices</span>
           </a>
-        </li>
+        </li> -->
       </ul>
 
       <ul *ngIf="userType == 'DeliveryMan'" class="sidebar-nav">
@@ -82,11 +82,11 @@
           </a>
         </li>
 
-        <li class="sidebar-item" [ngClass] = "{'active': router.url === '/income-manager'}">
+        <!-- <li class="sidebar-item" [ngClass] = "{'active': router.url === '/income-manager'}">
           <a class="sidebar-link" routerLink="/income-manager">
             <span class="align-middle material-icons">attach_money</span> <span class="align-middle">Bénéfices</span>
           </a>
-        </li>
+        </li> -->
       </ul>
 
     </div>

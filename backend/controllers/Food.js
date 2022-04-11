@@ -104,6 +104,7 @@ exports.getEvaluationOrder = (foodOrders) => {
                     foods[i].quantity = foodOrders[i].quantity;
                     foods[i].amount = foods[i].price * foods[i].quantity;
                     amountTotal += foods[i].amount;
+                    foods[i].restaurant._id = foods[i].restaurant._id.toString();
                 }
                 const orders = {
                     foods: foods,
