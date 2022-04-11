@@ -7,12 +7,14 @@ const auth = require('../middleware/auth');
 const multer = require('../middleware/multer-config');
 
 router.get('/', foodCtrl.getAllFoods);
+router.get('/search', foodCtrl.searchFood);
 router.get('/:foodId', foodCtrl.getOneFood);
 router.post('/evaluateOrder', foodCtrl.evaluateOrder);
 
 router.post('/', auth.authentified, auth.allowRestaurant, auth.checkAuthorisation, multer, foodCtrl.create);
 router.put('/:id', auth.authentified, auth.allowRestaurant, auth.checkAuthorisation, multer, foodCtrl.modify);
 router.delete('/:id', auth.authentified, auth.allowRestaurant, auth.checkAuthorisation, foodCtrl.delete);
+
 
 module.exports = router;
 

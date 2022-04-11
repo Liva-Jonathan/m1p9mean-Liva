@@ -10,8 +10,8 @@
             <img *ngIf="!food.isImageLoading" [src]="food.imageSrc" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title title">{{food.name}}</h5>
-                <span class="card-subtitle price d-flex align-items-center"><i class="align-middle" data-feather="credit-card"></i> {{food.price}} Ar</span>
-                <p class="card-text restaurant d-flex align-items-center"><i class="align-middle" data-feather="home"></i> {{food.restaurant.name}}</p>
+                <span class="card-subtitle price d-flex align-items-center">{{food.price}} Ar</span>
+                <p class="card-text restaurant d-flex align-items-center"><span class="material-icons">restaurant</span> {{food.restaurant.name}}</p>
                 <a routerLink="/foods/{{food._id}}" class="btn btn-outline-primary">Commander</a>
             </div>
         </div>

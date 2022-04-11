@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 import { BASE_URL } from 'src/environments/environment';
 import { AuthService } from './auth.service';
 
@@ -10,6 +11,9 @@ import { AuthService } from './auth.service';
 export class FoodService {
 
   nbClientOrder : number = 0;
+
+  searchResults = new BehaviorSubject(null);
+  isFoodsLoading: boolean = false;
 
   constructor(private http: HttpClient, private router : Router, private authService : AuthService) { 
     this.countClientOrder();
@@ -69,6 +73,18 @@ export class FoodService {
 
   deleteFood(id: string) {
     return this.http.delete(BASE_URL + '/Food/' + id, { headers: this.authService.createHeaders() });
+  }
+
+  onResults() {
+    return this.searchResults.asObservable();
+  }
+  
+  search(value: string) {
+    this.isFoodsLoading = true;
+    this.http.get(BASE_URL + '/Food/search?query=' + value).subscribe(results => {
+      this.isFoodsLoading = false;
+      this.searchResults.next(results);
+    });
   }
 
 }

@@ -73,6 +73,16 @@ exports.delete = (req, res, next) => {
       .catch(error => res.status(400).json({ error: error.message }));
 };
 
+exports.searchFood = (req, res, next) => {
+    Food.aggregate([joinRestaurantAddFields, joinRestaurantLookup, {$unwind: '$restaurant'}, {
+        $match: {
+            "name": { $regex: req.query.query, $options: 'i' }
+        }
+    }])
+    .then(foods => res.status(200).json(foods))
+    .catch(error => res.status(500).json({ error : error.message }))
+}
+
 exports.getEvaluationOrder = (foodOrders) => {
     return new Promise((resolve, reject) => {
         try {

@@ -14,12 +14,22 @@ export class FoodListClientComponent implements OnInit {
   foods : any[];
   isFoodsLoading = false;
 
-  constructor(private titleService : Title, private foodService : FoodService, private popup : PopupService, public imageService: ImageService) { }
+  test: string;
+
+  constructor(private titleService : Title, public foodService : FoodService, private popup : PopupService, public imageService: ImageService) { }
 
   ngOnInit(): void {
     this.titleService.setTitle("Plats");
 
     this.getFoods();
+
+    this.isFoodsLoading = true;
+    this.foodService.onResults().subscribe(foods => {
+      this.foods = foods;
+      for(let i=0; this.foods && i<this.foods.length; i++) {
+        this.imageService.getImage(this.foods[i]);
+      }
+    });
   }
 
   getFoods() : void {

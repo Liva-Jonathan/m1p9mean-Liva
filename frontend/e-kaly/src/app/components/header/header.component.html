@@ -5,6 +5,18 @@
 
     <div class="d-flex align-items-center title"><strong>{{titleService.getTitle()}}</strong></div>
 
+    <div *ngIf="router.url == '/foods'" class="d-flex justify-content-center" style="width: 100%">
+      <div class="input-group-prepend">
+        <div class="input-group-text">
+          <span *ngIf="!foodService.isFoodsLoading" class="material-icons">search</span>
+          <div *ngIf="foodService.isFoodsLoading" class="spinner-border text-secondary" role="status" style="font-size: 10px; width: 22px; height: 22px;">
+            <span class="sr-only"></span>
+        </div>
+        </div>
+      </div>
+      <input (input)="searchFood()" [(ngModel)]="search" style="width: 50% !important;" type="text" class="form-control" placeholder="Rechercher...">
+    </div>
+
     <div class="navbar-collapse collapse">
       <ul class="navbar-nav navbar-align">
         <li class="nav-item dropdown">
