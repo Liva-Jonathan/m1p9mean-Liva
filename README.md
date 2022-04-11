@@ -12,7 +12,7 @@ E-Kaly website for delivery company that allows you to order food from various r
 
 ## Lien vers site
 
-> Site Frontend: https://e-kaly-mean.herokuapp.com/
+> Site Frontend: https://m1p9mean-liva.herokuapp.com/
 
 >API: https://e-kaly-backend.herokuapp.com/api
 
